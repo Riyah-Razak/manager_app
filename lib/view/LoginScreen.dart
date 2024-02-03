@@ -23,8 +23,8 @@ class LoginScreen extends StatelessWidget {
               _buildSubText(),
               _buildEmailInput(),
               _buildLoginButton(),
-              _buildOrText(),
-              _buildSocialIcons(),
+              // _buildOrText(),
+              // _buildSocialIcons(),
             ],
           ),
         ),
@@ -164,63 +164,78 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-  Widget _buildOrText() {
-    return Padding(
-      padding: const EdgeInsets.only(top:15),
-      child: Center(
-        child: Container(
-          width: 17,
-          height: 21,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: const Center(
-            child: Text(
-              'Or',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Color(0xFF111111), // Text color
-                letterSpacing: 0,
-                height: 1.5,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildOrText() {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(top:15),
+  //     child: Center(
+  //       child: Container(
+  //         width: 17,
+  //         height: 21,
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(8),
+  //         ),
+  //         child: const Center(
+  //           child: Text(
+  //             'Or',
+  //             style: TextStyle(
+  //               fontFamily: 'Poppins',
+  //               fontSize: 16,
+  //               fontWeight: FontWeight.w400,
+  //               color: Color(0xFF111111), // Text color
+  //               letterSpacing: 0,
+  //               height: 1.5,
+  //             ),
+  //             textAlign: TextAlign.left,
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget _buildSocialIcons() {
-    return Padding(
-      padding: const EdgeInsets.only(top:5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _buildSocialIcon('assets/google.jpeg',40),
-          const SizedBox(width: 16),
-          _buildSocialIcon('assets/facebook.jpeg',29),
-          const SizedBox(width: 16),
-          _buildSocialIcon('assets/instagram.jpeg',29),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSocialIcon(String imagePath, double size) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(imagePath),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(size / 2), // Make it circular
-      ),
-    );
-  }
+  // Widget _buildSocialIcons() {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(top:5),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         _buildSocialIcon('assets/google.jpeg',40),
+  //         const SizedBox(width: 16),
+  //         _buildSocialIcon('assets/facebook.jpeg',29),
+  //         const SizedBox(width: 16),
+  //         _buildSocialIcon('assets/instagram.jpeg',29),
+  //       ],
+  //     ),
+  //   );
+  // }
+  // Widget _buildSocialIcons() {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(top: 5),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         _buildSocialIcon('assets/google.jpeg', 40),
+  //         const Spacer(), // Add Spacer to create space
+  //         _buildSocialIcon('assets/facebook.jpeg', 29),
+  //         const Spacer(), // Add Spacer to create space
+  //         _buildSocialIcon('assets/instagram.jpeg', 29),
+  //       ],
+  //     ),
+  //   );
+  // }
+  //
+  // Widget _buildSocialIcon(String imagePath, double size) {
+  //   return Container(
+  //     width: size,
+  //     height: size,
+  //     decoration: BoxDecoration(
+  //       image: DecorationImage(
+  //         image: AssetImage(imagePath),
+  //         fit: BoxFit.cover,
+  //       ),
+  //       borderRadius: BorderRadius.circular(size / 2), // Make it circular
+  //     ),
+  //   );
+  // }
 }
 
