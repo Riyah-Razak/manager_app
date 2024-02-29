@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:manager_app/view/VehicleScreen.dart';
 import 'package:provider/provider.dart';
-
 import '../controllers/LoginController.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  LoginScreen({super.key});
+  LoginScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -136,11 +135,13 @@ class LoginScreen extends StatelessWidget {
       padding: const EdgeInsets.only(top: 50),
       child: GestureDetector(
         onTap: () {
-          // Navigation logic
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const VehicleScreen()),
-          );
+          if (_formKey.currentState!.validate()) {
+            // Navigation logic
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const VehicleScreen()),
+            );
+          }
         },
         child: Center(
           child: Container(
@@ -170,4 +171,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
