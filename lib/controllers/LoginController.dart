@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+class LoginController with ChangeNotifier {
+  TextEditingController textEditingController = TextEditingController();
 
-class LoginController extends GetxController{
-  TextEditingController textEditingController=TextEditingController();
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 }

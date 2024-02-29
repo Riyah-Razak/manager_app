@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:manager_app/view/StepperScreen.dart';
+import 'package:manager_app/view/VehicleScreen.dart';
+import 'package:provider/provider.dart';
 
 import '../controllers/LoginController.dart';
 
 class LoginScreen extends StatelessWidget {
-
-  final LoginController loginController = Get.put(LoginController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,8 @@ class LoginScreen extends StatelessWidget {
               _buildTopContainer(),
               _buildLoginText(),
               _buildSubText(),
-              _buildEmailInput(),
-              _buildLoginButton(),
-              // _buildOrText(),
-              // _buildSocialIcons(),
+              _buildEmailInput(context),
+              _buildLoginButton(context),
             ],
           ),
         ),
@@ -32,9 +30,9 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-
   Widget _buildLoginText() {
-    return const Padding(padding: EdgeInsets.only(left: 28, top: 20),
+    return const Padding(
+      padding: EdgeInsets.only(left: 28, top: 20),
       child: Text(
         'Login',
         style: TextStyle(
@@ -46,7 +44,8 @@ class LoginScreen extends StatelessWidget {
           letterSpacing: 0,
         ),
         textAlign: TextAlign.left,
-      ),);
+      ),
+    );
   }
 
   Widget _buildTopContainer() {
@@ -60,7 +59,7 @@ class LoginScreen extends StatelessWidget {
             top: 55,
             left: 70,
             child: Image.asset(
-              'assets/manager_app_logo.png', // Add your image asset path here
+              'assets/manager_app_logo.png',
               width: 230,
               height: 150,
             ),
@@ -71,23 +70,28 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _buildSubText() {
-    return const Padding(padding: EdgeInsets.only(left: 29, top: 6),
+    return const Padding(
+      padding: EdgeInsets.only(left: 29, top: 6),
       child: Text(
         'With us to treat queens',
         style: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontFamily: 'Poppins',
-            fontSize: 14,
-            color: Color(0xFF111111),
-            letterSpacing: 0,
-            height: 1.5
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Poppins',
+          fontSize: 14,
+          color: Color(0xFF111111),
+          letterSpacing: 0,
+          height: 1.5,
         ),
         textAlign: TextAlign.left,
-      ),);
+      ),
+    );
   }
 
-  Widget _buildEmailInput() {
-    return Padding(padding: const EdgeInsets.only(left: 28, top:35,right: 28),
+  Widget _buildEmailInput(BuildContext context) {
+    final loginController = Provider.of<LoginController>(context);
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 28, top: 35, right: 28),
       child: Container(
         width: 332,
         height: 50,
@@ -95,8 +99,8 @@ class LoginScreen extends StatelessWidget {
           color: const Color(0xFFEAEAEA),
           borderRadius: BorderRadius.circular(8),
         ),
-        child:  Padding(
-          padding: const EdgeInsets.only(left: 17,right: 47),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 17, right: 47),
           child: Center(
             child: TextFormField(
               controller: loginController.textEditingController,
@@ -117,25 +121,26 @@ class LoginScreen extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF111111),
                   letterSpacing: 0,
-                  height: 1.5
+                  height: 1.5,
                 ),
-
               ),
             ),
           ),
         ),
-      ),);
+      ),
+    );
   }
 
-
-
-  Widget _buildLoginButton() {
+  Widget _buildLoginButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 50),
       child: GestureDetector(
         onTap: () {
           // Navigation logic
-          Get.to(() => StepperScreen());
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const VehicleScreen()),
+          );
         },
         child: Center(
           child: Container(
@@ -164,78 +169,5 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-  // Widget _buildOrText() {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(top:15),
-  //     child: Center(
-  //       child: Container(
-  //         width: 17,
-  //         height: 21,
-  //         decoration: BoxDecoration(
-  //           borderRadius: BorderRadius.circular(8),
-  //         ),
-  //         child: const Center(
-  //           child: Text(
-  //             'Or',
-  //             style: TextStyle(
-  //               fontFamily: 'Poppins',
-  //               fontSize: 16,
-  //               fontWeight: FontWeight.w400,
-  //               color: Color(0xFF111111), // Text color
-  //               letterSpacing: 0,
-  //               height: 1.5,
-  //             ),
-  //             textAlign: TextAlign.left,
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget _buildSocialIcons() {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(top:5),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         _buildSocialIcon('assets/google.jpeg',40),
-  //         const SizedBox(width: 16),
-  //         _buildSocialIcon('assets/facebook.jpeg',29),
-  //         const SizedBox(width: 16),
-  //         _buildSocialIcon('assets/instagram.jpeg',29),
-  //       ],
-  //     ),
-  //   );
-  // }
-  // Widget _buildSocialIcons() {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(top: 5),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         _buildSocialIcon('assets/google.jpeg', 40),
-  //         const Spacer(), // Add Spacer to create space
-  //         _buildSocialIcon('assets/facebook.jpeg', 29),
-  //         const Spacer(), // Add Spacer to create space
-  //         _buildSocialIcon('assets/instagram.jpeg', 29),
-  //       ],
-  //     ),
-  //   );
-  // }
-  //
-  // Widget _buildSocialIcon(String imagePath, double size) {
-  //   return Container(
-  //     width: size,
-  //     height: size,
-  //     decoration: BoxDecoration(
-  //       image: DecorationImage(
-  //         image: AssetImage(imagePath),
-  //         fit: BoxFit.cover,
-  //       ),
-  //       borderRadius: BorderRadius.circular(size / 2), // Make it circular
-  //     ),
-  //   );
-  // }
 }
 
